@@ -34,6 +34,41 @@ class App extends Component {
       
       // your code here!
 
+      // 
+
+      function translate (str) {
+        str=str.toLowerCase();
+    // value > -1, 
+            if (["a", "e", "i", "o", "u"].indexOf(str[0]) > -1) {
+            return str=str+"way";
+        }
+        // for words that start with one or more consonants
+            else {
+       //check for multiple consonants
+            for (var i = 0; i<str.length; i++){
+               if (vowelsArray.indexOf(str[i]) > -1){
+                   var firstcons = str.slice(0, i);
+                   var middle = str.slice(i, str.length);
+                   str = middle+firstcons+"ay";
+                   break;}
+                }
+
+
+          return str;}
+      }
+      console.log("new consolelog", translate(currentWord));
+
+
+      // 1: echo"     echoway     ok basic condition
+      // 2: "through" oughthray   ok basic condition
+      // 3: "yummy"   ummyyay     okish works only if y is the first wowel
+      // 4: "squeal"  ealsquay    NO  uealsqay
+      // 5: "queen"   eenquay     NO condition is missing
+      // 6: "fry      yfray       NO doesn't work declaration of "y"
+      
+
+
+
       // Remember: console.log is your friend :)
 
 
