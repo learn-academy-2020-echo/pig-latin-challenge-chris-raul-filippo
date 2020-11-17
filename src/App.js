@@ -36,27 +36,37 @@ class App extends Component {
 
       // 
 
-      function translate (str) {
+      const translate = (str) => {
         str=str.toLowerCase();
     // value > -1, 
-            if (["a", "e", "i", "o", "u"].indexOf(str[0]) > -1) {
-            return str=str+"way";
-        }
-        // for words that start with one or more consonants
-            else {
-       //check for multiple consonants
-            for (var i = 0; i<str.length; i++){
-               if (vowelsArray.indexOf(str[i]) > -1){
-                   var firstcons = str.slice(0, i);
-                   var middle = str.slice(i, str.length);
-                   str = middle+firstcons+"ay";
-                   break;}
-                }
+    for (var i = 0; i<str.length; i++){
+      if (vowelsArray.indexOf(str[i]) > -1){
+          var firstcons = str.slice(0, i);
+          var middle = str.slice(i, str.length);
+          str = middle+firstcons+"ay";
+          }
+        
+  
+      //for words that start with one or more consonants
+      else if (vowelsArray.indexOf(str[0]) > -1) {
+        return str=str+"way";
+      }
+        else {
+          "end"
+          }
+         }     //check for multiple consonants
+          //   for (var i = 0; i<str.length; i++){
+          //      if (vowelsArray.indexOf(str[i]) > -1){
+          //          var firstcons = str.slice(0, i);
+          //          var middle = str.slice(i, str.length);
+          //          str = middle+firstcons+"ay";
+          //          break;}
+          //       }
 
 
           return str;}
-      }
-      console.log("new consolelog", translate(currentWord));
+        }    
+      console.log("new consolelog": translate(currentWord));
 
 
       // 1: echo"     echoway     ok basic condition
@@ -66,7 +76,7 @@ class App extends Component {
       // 5: "queen"   eenquay     NO condition is missing
       // 6: "fry      yfray       NO doesn't work declaration of "y"
       
-
+    
 
 
       // Remember: console.log is your friend :)
