@@ -34,51 +34,50 @@ class App extends Component {
       
       // your code here!
 
-      // 
+      let firstVowel = vowelsArray[0]
+      let firstVowelLocation = currentWord.indexOf(firstVowel)
 
-      const translate = (str) => {
-        str=str.toLowerCase();
-    // value > -1, 
-    for (var i = 0; i<str.length; i++){
-      if (vowelsArray.indexOf(str[i]) > -1){
-          var firstcons = str.slice(0, i);
-          var middle = str.slice(i, str.length);
-          str = middle+firstcons+"ay";
-          }
-        
-  
-      //for words that start with one or more consonants
-      else if (vowelsArray.indexOf(str[0]) > -1) {
-        return str=str+"way";
-      }
-        else {
-          "end"
-          }
-         }     //check for multiple consonants
-          //   for (var i = 0; i<str.length; i++){
-          //      if (vowelsArray.indexOf(str[i]) > -1){
-          //          var firstcons = str.slice(0, i);
-          //          var middle = str.slice(i, str.length);
-          //          str = middle+firstcons+"ay";
-          //          break;}
-          //       }
-
-
-          return str;}
-        }    
-      console.log("new consolelog": translate(currentWord));
-
-
+      // console.log("firstvowel", firstVowel)
+      console.log("firstVowelLocation",firstVowelLocation)
+      
       // 1: echo"     echoway     ok basic condition
       // 2: "through" oughthray   ok basic condition
       // 3: "yummy"   ummyyay     okish works only if y is the first wowel
       // 4: "squeal"  ealsquay    NO  uealsqay
       // 5: "queen"   eenquay     NO condition is missing
       // 6: "fry      yfray       NO doesn't work declaration of "y"
-      
+
+    let str=currentWord.toLowerCase()
     
+      if (firstVowelLocation > 1) {
+      var firstcons = str.slice(0, firstVowelLocation);
+      var middle = str.slice(firstVowelLocation);
+      return middle+firstcons+"ay";
+      // str = currentWord+"ay";
+      }
+     //for words that start with a vowel
+      else if (firstVowelLocation === 0 ) {
+      return str+"way"
+      }
+    // else if for words starts with "Y"
+      else if (currentWord.startsWith("y") ) {
+        var firstcons2 = str.slice(0, firstVowelLocation);
+        var middle2 = str.slice(firstVowelLocation);
+        return middle2+firstcons2+"ay";
+        // "yummy = ummyyay"
+      }
 
+      //  Fry case: when "Y" is a vowel:
 
+      // else if (currentWord.endsWith("y") && currentWord.startsWith("y") != true)
+      //   var firstcons3 = str.slice(0, firstVowelLocation);
+      //   var middle3 = str.slice(firstVowelLocation);
+      //   return middle3+firstcons3+"MM";
+      
+        
+    
+  
+      
       // Remember: console.log is your friend :)
 
 
