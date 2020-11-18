@@ -28,7 +28,7 @@ class App extends Component {
       console.log("currentWord:", currentWord)
 
       let vowelsArray = currentWord.split("").filter(vowel => {
-        return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
+        return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u" 
       })
       console.log("vowelsArray:", vowelsArray)
       
@@ -37,7 +37,6 @@ class App extends Component {
       let firstVowel = vowelsArray[0]
       let firstVowelLocation = currentWord.indexOf(firstVowel)
 
-      // console.log("firstvowel", firstVowel)
       console.log("firstVowelLocation",firstVowelLocation)
       
       // 1: echo"     echoway     ok basic condition
@@ -49,33 +48,42 @@ class App extends Component {
 
     let str=currentWord.toLowerCase()
     
-      if (firstVowelLocation > 1) {
-      var firstcons = str.slice(0, firstVowelLocation);
-      var middle = str.slice(firstVowelLocation);
+      if (firstVowelLocation >= 1) {
+      let firstcons = str.slice(0, firstVowelLocation);
+      let middle = str.slice(firstVowelLocation);
       return middle+firstcons+"ay";
       // str = currentWord+"ay";
       }
-     //for words that start with a vowel
+     
+      //for words that start with a vowel
       else if (firstVowelLocation === 0 ) {
       return str+"way"
       }
-    // else if for words starts with "Y"
-      else if (currentWord.startsWith("y") ) {
-        var firstcons2 = str.slice(0, firstVowelLocation);
-        var middle2 = str.slice(firstVowelLocation);
+    
+      // else if for words starts with "Y"  
+    else if (currentWord.startsWith("y") ) {
+        let firstcons2 = str.slice(0, firstVowelLocation);
+        let middle2 = str.slice(firstVowelLocation);
         return middle2+firstcons2+"ay";
         // "yummy = ummyyay"
       }
 
-      //  Fry case: when "Y" is a vowel:
+       //Fry case: when "Y" is a vowel:
+      else if (currentWord.endsWith("y")){
+        var firstcons3 = str.slice(0, firstVowelLocation);
+        var middle3 = str.slice(firstVowelLocation);
+        return middle3+firstcons3+"ay";
+        //"fry = y.fr.ay"
+      }
 
-      // else if (currentWord.endsWith("y") && currentWord.startsWith("y") != true)
-      //   var firstcons3 = str.slice(0, firstVowelLocation);
-      //   var middle3 = str.slice(firstVowelLocation);
-      //   return middle3+firstcons3+"MM";
-      
-        
-    
+
+      //Handling words with 'qu'
+      else if (currentWord.includes("qu") ) {
+        let firstcons4 = str.slice(0, (firstVowelLocation+1));
+        let middle4 = str.slice((firstVowelLocation+1));
+        return middle4+firstcons4+"ay";
+        // "queen = een.qu.ay"
+      }
   
       
       // Remember: console.log is your friend :)
@@ -144,7 +152,7 @@ class App extends Component {
           <button onClick={ this.restartGame }>Clear</button>
         </div>
         <p>{ this.state.phraseTranslated }</p>
-        <footer>Coded by ~your name here~</footer>
+        <footer>Coded by ~Chris, Filippo, Raul~</footer>
       </React.Fragment>
     )
   }
